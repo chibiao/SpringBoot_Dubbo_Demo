@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="student_consumer" />
+        <module name="student_interface" />
+        <module name="student_mapper" />
+        <module name="student_pojo" />
+        <module name="student_provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="student_consumer" target="1.8" />
+      <module name="student_interface" target="1.8" />
+      <module name="student_mapper" target="1.8" />
+      <module name="student_parent" target="1.8" />
+      <module name="student_pojo" target="1.8" />
+      <module name="student_provider" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="student_consumer" options="-parameters" />
+      <module name="student_interface" options="-parameters" />
+      <module name="student_mapper" options="-parameters" />
+      <module name="student_pojo" options="-parameters" />
+      <module name="student_provider" options="-parameters" />
+    </option>
+  </component>
+</project>

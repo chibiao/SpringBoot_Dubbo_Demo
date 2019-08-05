@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itlike.mapper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.itlike.pojo.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="hobbies" property="hobbies" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="photopath" property="photopath" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itlike.pojo.Student" >
+    insert into student (id, name, age, 
+      birthday, hobbies, sex, photopath
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=DATE}, #{hobbies,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{photopath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.itlike.pojo.Student" >
+    update student
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      hobbies = #{hobbies,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      photopath = #{photopath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, name, age, birthday, hobbies, sex, photopath
+    from student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name, age, birthday, hobbies, sex, photopath
+    from student
+      <include refid="where_sql"/>
+  </select>
+    <!--sql片段-->
+    <sql id="where_sql">
+        <where>
+            <if test="keyword !=null and keyword !=''">
+                and name like concat('%',#{keyword},'%')
+            </if>
+        </where>
+    </sql>
+</mapper>

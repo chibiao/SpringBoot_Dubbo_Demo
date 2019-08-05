@@ -1,0 +1,17 @@
+spring:
+  mvc:
+    date-format: yyyy-MM-dd
+  dubbo:
+    application:
+      name: student_consumer
+    registry:
+      address: zookeeper://192.168.2.128
+      port: 2181
+    scan:
+      base-packages: com.itlike.controller #扫描的包名
+    consumer:
+      check: false
+server:
+  port: 8089
+  servlet:
+    context-path: /
